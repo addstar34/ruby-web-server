@@ -1,6 +1,8 @@
+$LOAD_PATH.unshift('.')
+
 require 'socket'
-require './request_parser'
-require './response_preparer'
+require 'request_parser'
+require 'response_preparer'
 
 PORT = 8081
 SERVER_ROOT = './app/views/layouts/'
@@ -16,7 +18,6 @@ loop {
   response = ResponsePreparer.prepare(request)
 
   puts "#{client.peeraddr} #{request.fetch(:path)} - #{response.code}"
-  puts "user-agent: #{response.headers[:'user-agent']}"
 
   response.send(client)
   client.close

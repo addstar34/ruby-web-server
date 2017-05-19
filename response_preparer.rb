@@ -1,4 +1,4 @@
-require './response'
+require 'response'
 
 class ResponsePreparer
   def initialize(request)
